@@ -1,0 +1,20 @@
+.container {
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  margin-left: 5px;
+}
+
+.delete-button {
+  margin-left: 5px;
+}
+
+.items {
+  display: flex;
+  justify-content: center;
+}

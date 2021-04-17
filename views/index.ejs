@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>To Do List</h1>
+      <form action="/create" method="post">
+        <label for="title">
+          <input type="text" name="title" id="title" placeholder="Todoを入力" />
+          <input type="submit" value="追加" />
+        </label>
+      </form>
+
+      <ul>
+        <% todos.forEach((todo) => { %>
+        <li>
+          <div class="items">
+            <label for="title">
+              <input type="checkbox" id="title" <%= todo.isDone ? "checked" :
+              null %> /> <%= todo.title %>
+            </label>
+            <form action="/delete/<%=todo.id%>" method="post">
+              <input type="submit" value="x" class="delete-button" />
+            </form>
+            <a href="/detail/<%=todo.id%>">
+              <button>詳細</button>
+            </a>
+          </div>
+        </li>
+        <% }) %>
+      </ul>
+      <div>
+        <button onclick="filter(this.name);" name="All">All</button>
+        <button onclick="filter(this.name);" name="Active">Active</button>
+        <button onclick="filter(this.name);" name="Completed">Completed</button>
+      </div>
+      <p>[{props.filterState}]を表示</p>
+    </div>
+
+    <script>
+      function filter(buttonName) {
+        const liElements = document.querySelectorAll("li");
+
+        if (buttonName === "All") {
+          liElements.forEach((liElement) => {
+            liElement.classList.remove("hidden");
+          });
+        }
+        if (buttonName === "Active") {
+          liElements.forEach((liElement) => {
+            liElement.classList.remove("hidden");
+          });
+        }
+        if (buttonName === "Completed") {
+        }
+      }
+    </script>
+  </body>
+</html>
