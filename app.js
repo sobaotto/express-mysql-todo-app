@@ -32,6 +32,15 @@ app.get("/detail/:id", (req, res) => {
   );
 });
 
+app.post("/update/:id", (req, res) => {
+  connection.query(
+    `SELECT * FROM todos WHERE id=${req.params.id}`,
+    (error, result) => {
+      res.render("detail.ejs", { todo: result });
+    }
+  );
+});
+
 app.post("/delete/:id", (req, res) => {
   connection.query(
     `DELETE FROM todos WHERE id=${req.params.id}`,

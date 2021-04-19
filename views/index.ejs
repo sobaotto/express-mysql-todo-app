@@ -17,47 +17,33 @@
 
       <ul>
         <% todos.forEach((todo) => { %>
-        <li>
-          <div class="items">
-            <label for="title">
-              <input type="checkbox" id="title" <%= todo.isDone ? "checked" :
-              null %> /> <%= todo.title %>
-            </label>
-            <form action="/delete/<%=todo.id%>" method="post">
-              <input type="submit" value="x" class="delete-button" />
-            </form>
-            <a href="/detail/<%=todo.id%>">
-              <button>詳細</button>
-            </a>
-          </div>
+        <li class="todo-item">
+          <label>
+            <input type="checkbox" <%= todo.isDone ? "checked" : null %> /> <%=
+            todo.title %>
+          </label>
+
+          <form action="/delete/<%=todo.id%>" method="post">
+            <input type="submit" value="x" class="delete-button" />
+          </form>
+          <a href="/detail/<%=todo.id%>">
+            <button>詳細</button>
+          </a>
         </li>
         <% }) %>
       </ul>
       <div>
-        <button onclick="filter(this.name);" name="All">All</button>
-        <button onclick="filter(this.name);" name="Active">Active</button>
-        <button onclick="filter(this.name);" name="Completed">Completed</button>
+        <label for="all">
+          <input type="radio" name="filter" id="all" checked />All
+        </label>
+        <label for="active">
+          <input type="radio" name="filter" id="active" />Active
+        </label>
+        <label for="completed">
+          <input type="radio" name="filter" id="completed" />Completed
+        </label>
       </div>
-      <p>[{props.filterState}]を表示</p>
     </div>
-
-    <script>
-      function filter(buttonName) {
-        const liElements = document.querySelectorAll("li");
-
-        if (buttonName === "All") {
-          liElements.forEach((liElement) => {
-            liElement.classList.remove("hidden");
-          });
-        }
-        if (buttonName === "Active") {
-          liElements.forEach((liElement) => {
-            liElement.classList.remove("hidden");
-          });
-        }
-        if (buttonName === "Completed") {
-        }
-      }
-    </script>
+    <script src="/js/index.js" type="module"></script>
   </body>
 </html>

@@ -7,14 +7,18 @@ ul {
 }
 
 button {
-  margin-left: 5px;
+  margin: 2px 0 0 4px;
 }
 
 .delete-button {
   margin-left: 5px;
 }
 
-.items {
+.todo-item {
   display: flex;
   justify-content: center;
+}
+
+.hidden {
+  display: none;
 }
