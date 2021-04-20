@@ -1,5 +1,7 @@
 "use strict";
 
+import { FILTER_STATE } from "./const/filter-state";
+
 const filterItems = () => {
   const radioButtons = document.querySelectorAll("input[name=filter]");
   console.log(radioButtons);
@@ -13,12 +15,12 @@ const filterItems = () => {
       const todoItemElements = document.querySelectorAll(".todo-item");
 
       switch (selectedElement.id) {
-        case "all":
+        case FILTER_STATE.ALL:
           todoItemElements.forEach((element) => {
             element.classList.remove("hidden");
           });
           break;
-        case "active":
+        case FILTER_STATE.ACTIVE:
           todoItemElements.forEach((element) => {
             if (element.childNodes[1].childNodes[1].checked) {
               element.classList.remove("hidden");
@@ -28,7 +30,7 @@ const filterItems = () => {
             }
           });
           break;
-        case "completed":
+        case FILTER_STATE.COMPLETED:
           todoItemElements.forEach((element) => {
             if (element.childNodes[1].childNodes[1].checked) {
               element.classList.add("hidden");
