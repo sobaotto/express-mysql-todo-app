@@ -26,6 +26,9 @@
           <form action="/delete/<%=todo.id%>" method="post">
             <input type="submit" value="x" class="delete-button" />
           </form>
+          <a href="/edit/<%=todo.id%>">
+            <button>編集</button>
+          </a>
           <a href="/detail/<%=todo.id%>">
             <button>詳細</button>
           </a>

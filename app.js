@@ -23,34 +23,41 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/edit/:id", (req, res) => {
+  connection.query(
+    `SELECT * FROM todos WHERE id=${req.params.id}`,
+    (error, result) => {
+      res.render("edit.ejs", { todo: result[0] });
+    }
+  );
+});
+
 app.get("/detail/:id", (req, res) => {
   connection.query(
     `SELECT * FROM todos WHERE id=${req.params.id}`,
     (error, result) => {
-      res.render("detail.ejs", { todo: result });
+      res.render("detail.ejs", { todo: result[0] });
     }
-  );
-});
-
-app.post("/update/:id", (req, res) => {
-  connection.query(
-    `SELECT * FROM todos WHERE id=${req.params.id}`,
-    (error, result) => {
-      res.render("detail.ejs", { todo: result });
-    }
-  );
-});
-
-app.post("/delete/:id", (req, res) => {
-  connection.query(
-    `DELETE FROM todos WHERE id=${req.params.id}`,
-    res.redirect("/")
   );
 });
 
 app.post("/create", (req, res) => {
   connection.query(
     `INSERT INTO todos (title, isDone) VALUES ('${req.body.title}', FALSE);`,
+    res.redirect("/")
+  );
+});
+
+app.post("/update/:id", (req, res) => {
+  connection.query(
+    `UPDATE todos SET title="${req.body.title}" WHERE id=${req.params.id};`,
+    res.redirect("/")
+  );
+});
+
+app.post("/delete/:id", (req, res) => {
+  connection.query(
+    `DELETE FROM todos WHERE id=${req.params.id}`,
     res.redirect("/")
   );
 });
