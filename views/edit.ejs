@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>To Do List</h1>
+      <form action="/update/<%=todo.id%>" method="post">
+        <label for="title">
+          <input
+            type="text"
+            name="title"
+            id="title"
+            value="<%= todo.title %>"
+          />
+          <input type="submit" value="更新" />
+        </label>
+      </form>
+
+      <a href="/"><button>戻る</button></a>
+    </div>
+  </body>
+</html>
