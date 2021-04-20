@@ -1,0 +1,29 @@
+.container {
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  margin: 2px 0 0 4px;
+}
+
+.delete-button {
+  margin-left: 5px;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.item-detail {
+  display: flex;
+  justify-content: center;
+}

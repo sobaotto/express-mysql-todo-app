@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>To Do List</h1>
+      <form action="/create" method="post">
+        <label for="title">
+          <input type="text" name="title" id="title" placeholder="Todoを入力" />
+          <input type="submit" value="追加" />
+        </label>
+      </form>
+
+      <ul>
+        <% todos.forEach((todo) => { %>
+        <li class="todo-item">
+          <label>
+            <input type="checkbox" <%= todo.isDone ? "checked" : null %> /> <%=
+            todo.title %>
+          </label>
+
+          <form action="/delete/<%=todo.id%>" method="post">
+            <input type="submit" value="x" class="delete-button" />
+          </form>
+          <a href="/edit/<%=todo.id%>">
+            <button>編集</button>
+          </a>
+          <a href="/detail/<%=todo.id%>">
+            <button>詳細</button>
+          </a>
+        </li>
+        <% }) %>
+      </ul>
+      <div>
+        <label for="all">
+          <input type="radio" name="filter" id="all" checked />All
+        </label>
+        <label for="active">
+          <input type="radio" name="filter" id="active" />Active
+        </label>
+        <label for="completed">
+          <input type="radio" name="filter" id="completed" />Completed
+        </label>
+      </div>
+    </div>
+    <script src="/js/index.js" type="module"></script>
+  </body>
+</html>
