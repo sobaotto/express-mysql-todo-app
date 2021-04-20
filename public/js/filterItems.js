@@ -1,10 +1,9 @@
 "use strict";
 
-import { FILTER_STATE } from "./const/filter-state";
+import { FILTER_STATE } from "./const/filter-state.js";
 
 const filterItems = () => {
   const radioButtons = document.querySelectorAll("input[name=filter]");
-  console.log(radioButtons);
 
   for (const radioButton of radioButtons) {
     radioButton.addEventListener("change", () => {
